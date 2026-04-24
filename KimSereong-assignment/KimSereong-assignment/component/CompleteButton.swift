@@ -9,6 +9,8 @@ import UIKit
 
 class CompleteButton: UIButton {
     
+    // MARK: - init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupStyle()
@@ -18,6 +20,13 @@ class CompleteButton: UIButton {
         fatalError()
     }
     
+    convenience init(title: String) {
+        self.init(frame: .zero)
+        self.setTitle(title, for: .normal)
+    }
+    
+    // MARK: - Logic
+
     private func setupStyle() {
         backgroundColor = .gray600
         setTitleColor(.white, for: .normal)
@@ -25,8 +34,4 @@ class CompleteButton: UIButton {
         layer.cornerRadius = 10
     }
     
-    convenience init(title: String) {
-        self.init(frame: .zero)
-        self.setTitle(title, for: .normal)
-    }
 }
