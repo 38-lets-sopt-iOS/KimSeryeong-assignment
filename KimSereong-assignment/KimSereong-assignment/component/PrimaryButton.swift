@@ -9,17 +9,8 @@ import UIKit
 
 class PrimaryButton: UIButton {
     
-    override var isEnabled: Bool {
-        didSet {
-            if isEnabled {
-                backgroundColor = .watchapink
-            } else {
-                backgroundColor = .gray400
-                setTitleColor(.gray200, for: .normal)
-            }
-        }
-    }
-    
+    // MARK: - init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupStyle()
@@ -29,6 +20,26 @@ class PrimaryButton: UIButton {
         fatalError()
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            if isEnabled {
+                backgroundColor = .watchapink
+                setTitleColor(.white, for: .normal)
+            } else {
+                backgroundColor = .gray400
+                setTitleColor(.gray200, for: .normal)
+            }
+        }
+    }
+    
+    convenience init(title: String) {
+        self.init(frame: .zero)
+        self.setTitle(title, for: .normal)
+    }
+
+    // MARK: - setUp
+
+    
     private func setupStyle() {
         backgroundColor = .watchapink
         setTitleColor(.white, for: .normal)
@@ -36,8 +47,4 @@ class PrimaryButton: UIButton {
         layer.cornerRadius = 10
     }
     
-    convenience init(title: String) {
-        self.init(frame: .zero)
-        self.setTitle(title, for: .normal)
-    }
 }
