@@ -10,7 +10,6 @@ import UIKit
 enum PretendardWeight: String {
     case thin = "Pretendard-Thin"
     case extraLight = "Pretendard-ExtraLight"
-    case light = "Pretendard-Light"
     case regular = "Pretendard-Regular"
     case medium = "Pretendard-Medium"
     case semiBold = "Pretendard-SemiBold"
@@ -37,3 +36,4 @@ extension UIFont {
     static let body2 = UIFont.pretendard(.regular, size: 12)
     static let cap1 = UIFont.pretendard(.thin, size: 12)
 }
+
