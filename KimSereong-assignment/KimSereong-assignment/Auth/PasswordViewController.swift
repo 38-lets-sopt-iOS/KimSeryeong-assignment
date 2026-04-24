@@ -52,6 +52,8 @@ final class PasswordViewController: UIViewController {
         let button = UIButton()
         button.setTitle("닉네임 설정", for: .normal)
         button.addTarget(self, action: #selector(showBottomSheet), for: .touchUpInside)
+        button.titleLabel?.font = .body2
+        button.titleLabel?.textColor = .gray100
         return button
     }()
     
@@ -155,6 +157,14 @@ final class PasswordViewController: UIViewController {
         validate()
     }
     
+    @objc private func nextButtonDidTapped() {
+        let welcomeVC = WelcomeViewController()
+        welcomeVC.nickname = nickname
+        welcomeVC.modalPresentationStyle = .fullScreen
+        present(welcomeVC, animated: true)
+    }
+    
+    //BottomSheet
     @objc private func showBottomSheet() {
         let bottomVC = BottomSheetViewController()
         bottomVC.delegate = self
@@ -167,13 +177,6 @@ final class PasswordViewController: UIViewController {
         }
         
         present(bottomVC, animated: true)
-    }
-    
-    @objc private func nextButtonDidTapped() {
-        let welcomeVC = WelcomeViewController()
-        welcomeVC.nickname = nickname
-        welcomeVC.modalPresentationStyle = .fullScreen
-        present(welcomeVC, animated: true)
     }
     
     // MARK: - Navigation
