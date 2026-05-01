@@ -40,7 +40,7 @@ final class DummyTabViewController: UIViewController {
     }
     
     // MARK: - Setup
-
+    
     private func setUI() {
         view.addSubview(imageView)
         

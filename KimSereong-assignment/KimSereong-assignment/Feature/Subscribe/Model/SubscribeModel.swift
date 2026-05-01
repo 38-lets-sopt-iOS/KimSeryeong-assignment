@@ -18,7 +18,7 @@ enum SectionType: Int, CaseIterable {
     case newcontent = 1
     case watgorithm = 2
     case comingcontent = 3
-    case watchaparty = 4 
+    case watchaparty = 4
     
     var numberOfItemInSection: Int {
         switch self {

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class SubscribeViewController: UIViewController {
+final class SubscribeViewController: UIViewController, UICollectionViewDelegate {
     
     // MARK: - UI
     
@@ -38,7 +38,7 @@ final class SubscribeViewController: UIViewController {
         SectionModel(
             type: .newcontent,
             items: ["new1", "new2", "new1"],
-            headerTitle: "방금 막 도착한 신상 콘텐츠\n예능부터 드라마까지"),
+            headerTitle: "방금 막 도착한 신상 콘텐츠"),
         SectionModel(
             type: .watgorithm,
             items: ["sub1", "sub2", "sub3", "sub3"],
@@ -147,74 +147,4 @@ final class SubscribeViewController: UIViewController {
     }
 }
 
-// MARK: - extension
-
-extension SubscribeViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return sectionList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sectionList[section].items.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let section = sectionList[indexPath.section]
-        
-        switch section.type {
-            
-        case .main:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: MaincontentCollectionViewCell.identifier,
-                for: indexPath
-            ) as? MaincontentCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.bindImage(section.items[indexPath.item])
-            return cell
-            
-        case .newcontent:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: NewContentCollectionViewCell.identifier,
-                for: indexPath
-            ) as? NewContentCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.bindImage(section.items[indexPath.item])
-            return cell
-            
-        case .watgorithm, .comingcontent, .watchaparty:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PosterCollectionViewCell.identifier,
-                for: indexPath
-            ) as? PosterCollectionViewCell else { return UICollectionViewCell() }
-            
-            cell.bindImage(section.items[indexPath.item])
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        guard let header = collectionView.dequeueReusableSupplementaryView(
-            ofKind: kind,
-            withReuseIdentifier: SectionHeaderView.identifier,
-            for: indexPath
-        ) as? SectionHeaderView else {
-            return UICollectionReusableView()
-        }
-        
-        header.titleLabel.text = sectionList[indexPath.section].headerTitle
-        return header
-    }
-}
-
-// MARK: - Delegate
-
-extension SubscribeViewController: UICollectionViewDelegate {
-    
-}
 
