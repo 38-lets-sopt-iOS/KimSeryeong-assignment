@@ -1,5 +1,5 @@
 //
-//  SubscribeViewController.swift
+//  CompositionalLayout.swift
 //  KimSereong-assignment
 //
 //  Created by 김세령 on 4/29/26.
