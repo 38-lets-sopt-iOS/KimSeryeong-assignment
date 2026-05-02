@@ -30,7 +30,7 @@ final class SubscribeViewController: UIViewController, UICollectionViewDelegate 
     
     // MARK: - Data
     
-    private var sectionList: [SectionModel] = [
+    var sectionList: [SectionModel] = [
         SectionModel(
             type: .main,
             items: ["main1", "main2", "main1"],
