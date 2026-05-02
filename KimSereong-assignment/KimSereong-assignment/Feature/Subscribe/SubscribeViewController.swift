@@ -26,7 +26,7 @@ final class SubscribeViewController: UIViewController, UICollectionViewDelegate 
         collectionView.backgroundColor = .black
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
-    }()
+    }() 
     
     // MARK: - Data
     
