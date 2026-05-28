@@ -46,6 +46,8 @@ final class PasswordViewController: UIViewController {
         let button = UIButton()
         button.setTitle("닉네임 설정", for: .normal)
         button.addTarget(self, action: #selector(showBottomSheet), for: .touchUpInside)
+        button.titleLabel?.font = .body2
+        button.titleLabel?.textColor = .gray100
         return button
     }()
     
@@ -57,9 +59,6 @@ final class PasswordViewController: UIViewController {
         button.addTarget(self, action: #selector(nextButtonDidTapped), for: .touchUpInside)
         return button
     }()
-    
-
-    
     
     // MARK: - Setup
     
@@ -87,10 +86,9 @@ final class PasswordViewController: UIViewController {
         }
         
         passwordTextLabel.snp.makeConstraints {
-            $0.top.equalTo(passwordTextLabel.snp.bottom).offset(13)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(13)
             $0.leading.equalToSuperview().inset(54)
         }
-        
         
         nicknameButton.snp.makeConstraints {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(40)
@@ -115,7 +113,7 @@ final class PasswordViewController: UIViewController {
         }
     }
     
-    private func vaildate() {
+    private func validate() {
         let password = passwordTextField.textField.text ?? ""
         mainButton.isEnabled = password.isValidPassword && nickname != nil
     }
@@ -128,9 +126,18 @@ final class PasswordViewController: UIViewController {
     }
     
     @objc private func textChanged() {
-        vaildate()
+        validate()
     }
-    
+
+    @objc private func nextButtonDidTapped() {
+        let welcomeVC = WelcomeViewController()
+        welcomeVC.nickname = nickname
+        welcomeVC.modalPresentationStyle = .fullScreen
+        present(welcomeVC, animated: true)
+    }
+
+    // MARK: - BottomSheet
+
     @objc private func showBottomSheet() {
         let bottomSheetViewController = BottomSheetViewController()
         bottomSheetViewController.delegate = self
@@ -145,13 +152,6 @@ final class PasswordViewController: UIViewController {
         present(bottomSheetViewController, animated: true)
     }
     
-    @objc private func nextButtonDidTapped() {
-        let welcomeVC = WelcomeViewController()
-        welcomeVC.nickname = nickname
-        welcomeVC.modalPresentationStyle = .fullScreen
-        present(welcomeVC, animated: true)
-    }
-    
     // MARK: - LifeCycle
     
     override func viewDidLoad() {
@@ -162,7 +162,7 @@ final class PasswordViewController: UIViewController {
         setLayout()
         setAction()
         updateUI()
-        vaildate()
+        validate()
         
         passwordTextField.type = .password
     }
@@ -172,16 +172,12 @@ final class PasswordViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
-    
 
-    // MARK: - Delegate
+// MARK: - Delegate
 
 extension PasswordViewController: NicknameDelegateProtocol {
     func didTapNickname(nickname: String) {
         self.nickname = nickname
         nicknameButton.setTitle(nickname, for: .normal)
     }
-    
 }
-
-
