@@ -28,7 +28,7 @@ extension SubscribeViewController: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MaincontentCollectionViewCell.identifier,
                 for: indexPath
-            ) as? MaincontentCollectionViewCell else { return UICollectionViewCell() } 
+            ) as? MaincontentCollectionViewCell else { return UICollectionViewCell() }
             
             cell.bindImage(section.items[indexPath.item])
             return cell
