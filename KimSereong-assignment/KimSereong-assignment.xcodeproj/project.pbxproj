@@ -11,7 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B6A4A022F966B3C00D6A9BA /* KimSereong-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KimSereong-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B6A4A022F966B3C00D6A9BA /* KimSereong-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "KimSereong-assignment.app"; path = "/Users/kimseryung/Desktop/과제/KimSeryeong-assignment/KimSereong-assignment/build/Debug-iphoneos/KimSereong-assignment.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -51,16 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				3B6A4A042F966B3C00D6A9BA /* KimSereong-assignment */,
-				3B6A4A032F966B3C00D6A9BA /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		3B6A4A032F966B3C00D6A9BA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3B6A4A022F966B3C00D6A9BA /* KimSereong-assignment.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,7 +108,7 @@
 				3B6A4AC42F97F5FC00D6A9BA /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 3B6A4A032F966B3C00D6A9BA /* Products */;
+			productRefGroup = 3B6A49F92F966B3C00D6A9BA;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 class WelcomeViewController : UIViewController, NicknameDelegateProtocol {
     
@@ -34,7 +35,11 @@ class WelcomeViewController : UIViewController, NicknameDelegateProtocol {
         return label
     }()
     
-    let mainbutton: UIButton = PrimaryButton(title: "메인으로")
+    lazy var mainbutton: UIButton = {
+        let button = PrimaryButton(title: "메인으로")
+        button.addTarget(self, action: #selector(mainButtonDidTapped), for: .touchUpInside)
+        return button
+    }()
     
     
     // MARK: - LifeCycle
@@ -89,6 +94,13 @@ class WelcomeViewController : UIViewController, NicknameDelegateProtocol {
     func didTapNickname(nickname: String) {
         self.nickname = nickname
         bindID() // UI 업데이트
+    }
+
+    @objc private func mainButtonDidTapped() {
+        let mainView = WatchaMainView()
+        let hostingController = UIHostingController(rootView: mainView)
+        hostingController.modalPresentationStyle = .fullScreen
+        present(hostingController, animated: true)
     }
 
 }
